@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="earth" size="1.000000 1.000000"/>
+        <ImageTarget name="sun" size="1.000000 1.000000"/>
+        <ImageTarget name="magic_box.Left" size="1.000000 1.000000"/>
+        <ImageTarget name="magic_box.Top" size="1.000000 1.000000"/>
+        <ImageTarget name="magic_box.Front" size="1.000000 1.000000"/>
+        <ImageTarget name="magic_box.Bottom" size="1.000000 1.000000"/>
+        <ImageTarget name="magic_box.Right" size="1.000000 1.000000"/>
+        <ImageTarget name="magic_box.Back" size="1.000000 1.000000"/>
+        <MultiTarget name="magic_box">
+            <Part name="magic_box.Left" translation="-0.5 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="magic_box.Right" translation="0.5 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="magic_box.Front" translation="0 0 0.5" rotation="AD: 1 0 0 0"/>
+            <Part name="magic_box.Back" translation="0 0 -0.5" rotation="AD: 0 1 0 180"/>
+            <Part name="magic_box.Top" translation="0 0.5 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="magic_box.Bottom" translation="0 -0.5 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>

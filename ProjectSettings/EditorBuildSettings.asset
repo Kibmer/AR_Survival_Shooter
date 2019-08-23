@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/LuncherWithPhoton.unity
+    guid: 799b9c1f0bf4f4ac993a8b5719fe6430
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: ace8a89a155d3d649aca839a73b1ef27
   m_configObjects: {}

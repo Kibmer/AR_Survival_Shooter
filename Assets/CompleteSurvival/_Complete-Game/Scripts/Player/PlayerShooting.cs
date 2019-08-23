@@ -3,7 +3,7 @@ using UnitySampleAssets.CrossPlatformInput;
 
 namespace CompleteProject
 {
-    public class PlayerShooting : MonoBehaviour
+    public class PlayerShooting : Photon.MonoBehaviour
     {
         public int damagePerShot = 20;                  // The damage inflicted by each bullet.
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
@@ -21,9 +21,12 @@ namespace CompleteProject
 		public Light faceLight;								// Duh
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 
+        PhotonView pv;
 
         void Awake ()
         {
+            pv = GetComponentInParent<PhotonView>();
+            // pv = transform.parent.gameObject.GetComponent<PhotonView>();
             // Create a layer mask for the Shootable layer.
             shootableMask = LayerMask.GetMask ("Shootable");
 
@@ -45,13 +48,17 @@ namespace CompleteProject
             // If the Fire1 button is being press and it's time to fire...
 			if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
             {
+                if(!pv.isMine) return;
+                PhotonNetwork.RPC(pv, "Shooting", PhotonTargets.All, false);
                 // ... shoot the gun.
-                Shoot ();
+                // Shoot ();
             }
 #else
             // If there is input on the shoot direction stick and it's time to fire...
             if ((CrossPlatformInputManager.GetAxisRaw("Mouse X") != 0 || CrossPlatformInputManager.GetAxisRaw("Mouse Y") != 0) && timer >= timeBetweenBullets)
             {
+                if(!pv.isMine) return;
+                PhotonNetwork.RPC(pv, "Shooting", PhotonTargets.All, false);
                 // ... shoot the gun
                 Shoot();
             }
@@ -72,7 +79,6 @@ namespace CompleteProject
 			faceLight.enabled = false;
             gunLight.enabled = false;
         }
-
 
         void Shoot ()
         {
